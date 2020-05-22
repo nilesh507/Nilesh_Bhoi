@@ -3,6 +3,9 @@
         <title>
             <%= title %>
         </title>
+        <!-- Creating a link for static css file use slash '/' will look up for the file from the root of the folder  -->
+        <link rel="stylesheet" href="/css/layout.css">      
+        <%- style %>
     </head>
 
     <body>
@@ -11,5 +14,7 @@
         <%- body %>
 
         <%- include('_footer');%>
+
+        <%- script %>
     </body>
 </html> 

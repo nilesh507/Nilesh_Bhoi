@@ -1,7 +1,7 @@
 //Import the mongoose module
 var mongoose = require('mongoose');
 //Set up default mongoose connection
-mongoose.connect('mongoDB://localhost/codeial_development');
+mongoose.connect('mongodb://localhost/codeial_development', {useNewUrlParser: true }); 
 //Get the default connection
 const db = mongoose.connection;
 //Bind connection to error event (to get notification of connection errors)

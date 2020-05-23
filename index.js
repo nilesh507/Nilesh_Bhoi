@@ -6,7 +6,9 @@ const expressLayouts = require("express-ejs-layouts");
 const db = require('./config/mongoose')
 
 //use static pages
-app.use(express.static('./assets'))
+app.use(express.static('./assets'));
+
+
 //use express-ejs-layouts 
 app.use(expressLayouts);
 // extract styles and scripts from sub pages into the layout 
@@ -32,3 +34,4 @@ app.listen(port, function(err){
     console.log(`Server is running on the port: ${port}`);
 
 });
+

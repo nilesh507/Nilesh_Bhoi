@@ -9,7 +9,6 @@ const postSchema = new mongoose.Schema({
     user:{
         type: mongoose.Schema.Types.ObjectId,
         ref: 'User'
-``
     }
 },{
     timestamps: true
@@ -17,4 +16,4 @@ const postSchema = new mongoose.Schema({
 
 
 const Post = mongoose.model('Post',postSchema);
-module.exports.Post;
+module.exports=Post;

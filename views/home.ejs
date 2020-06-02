@@ -16,6 +16,13 @@
                 
                 <li>
                     <p>
+                        <!-- If user is signed in and user who created the post 
+                        is same as user who is trying to delete the post  -->
+                        <% if (locals.user && locals.user.id == post.user.id) { %>
+                            <small>
+                                <a href="/posts/destroy/<%= post.id %>">X</a>
+                            </small>
+                        <% } %>
                         <%= post.content %>
                     <br>
                     <small>

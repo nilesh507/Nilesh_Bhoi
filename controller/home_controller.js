@@ -22,6 +22,7 @@ module.exports.home = function(req, res){
         }
     })
     .exec(function(err, posts){
+        // find all the user and return them as well 
         User.find({}, function(err, user){
             return res.render('home.ejs', {
                 title : "Home Page",

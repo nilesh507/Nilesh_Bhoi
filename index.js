@@ -45,7 +45,7 @@ app.set('views', './views');
 //mongo store is used to store the session cookie in the db
 app.use(session({
     name: "codeial",
-    //TODO change the seceret for production mode
+    //TODO change the seceret before deployment in production mode
     secret: 'something',
     saveUninitialized: false,
     resave: false,
@@ -72,7 +72,7 @@ app.use(flash());
 app.use(customMware.setFlash);
 
 // use express router
-app.use('/', require('./routes/index'));
+app.use('/', require('./routes'));
 
 
 app.listen(port, function(err){

@@ -1,4 +1,5 @@
 <html>
+
     <head>
         <title>
             <%= title %>
@@ -9,7 +10,7 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
         <!-- Creating a link for static css file use slash '/' will look up for the file from the root of the folder  -->
-        <link rel="stylesheet" href="/css/layout.css">      
+        <link rel="stylesheet" href="/css/layout.css">
         <link rel="stylesheet" href="/css/header.css">
         <link rel="stylesheet" href="/css/footer.css">
         <%- style %>
@@ -17,36 +18,37 @@
 
     <body>
         <%- include('_header');%>
-        
+
         <main id="layout-main">
             <%- body %>
         </main>
-        
+
 
         <%- include('_footer');%>
 
         <%- script %>
 
         <script>
-            <% if (flash.success && flash.success.length > 0 ) { %>
+                <% if (flash.success && flash.success.length > 0) { %>
                 new Noty({
                     theme: 'relax',
-                    text : '<%= flash.success %>',
+                    text: '<%= flash.success %>',
                     type: 'success',
                     layout: 'topRight',
                     timeout: 1500
                 }).show(); 
-            <% } %>
-            <% if (flash.error && flash.error.length > 0 ) { %>
+                <% } %>
+                <% if (flash.error && flash.error.length > 0) { %>
                 new Noty({
                     theme: 'relax',
-                    text : '<%= flash.error %>',
+                    text: '<%= flash.error %>',
                     type: 'error',
                     layout: 'topRight',
                     timeout: 1500
                 }).show(); 
-            <% } %>
+                <% } %>
         </script>
 
     </body>
-</html> 
+
+</html>

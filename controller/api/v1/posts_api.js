@@ -15,32 +15,34 @@ module.exports.index = async function (req, res) {
 
     return res.json(200, {
         message: "List of posts",
-        posts: posts,
+        posts: posts
     })
 }
 
-module.exports.destroy = async function(req, res){
+module.exports.destroy = async function (req, res) {
 
-    try{
+    try {
         let post = await Post.findById(req.params.id);
 
-        // if (post.user == req.user.id){
+        if (post.user == req.user.id) {
             post.remove();
 
-            await Comment.deleteMany({post: req.params.id});
-            
-            return res.json(200, {
-                message: "Post and associated comments deleted Successfully"
-            });
-        // }else{
-        //     req.flash('error', 'You cannot delete this post!');
-        //     return res.redirect('back');
-        // }
+            await Comment.deleteMany({ post: req.params.id });
 
-    }catch(err){
-        console.log('****', err);
+            return res.json(200, {
+                message: "Post and associated comments deleted successfully!"
+            });
+        } else {
+            // console.log("You are in else statement");
+            return res.json(401, {
+                message: 'You cannot delete this post!'
+            });
+        }
+
+    } catch (err) {
+        console.log('********', err);
         return res.json(500, {
-            message: "Interenal Server Error!!!"
-        })
+            message: "Internal Server Error"
+        });
     }
 }

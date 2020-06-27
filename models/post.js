@@ -2,19 +2,25 @@ const mongoose = require('mongoose');
 
 
 const postSchema = new mongoose.Schema({
-    content:{
+    content: {
         type: String,
         required: true
     },
-    user:{
-        type: mongoose.Schema.Types.ObjectId,
+    user: {
+        type:  mongoose.Schema.Types.ObjectId,
         ref: 'User'
     },
-    //include array of id's of all the comments in this post schema itself
+    // include the array of ids of all comments in this post schema itself
     comments: [
         {
-            type: mongoose.Schema.Types.ObjectId,
+            type:  mongoose.Schema.Types.ObjectId,
             ref: 'Comment'
+        }
+    ],
+    likes: [
+        {
+            type:mongoose.Schema.Types.ObjectId,
+            ref: 'Like'
         }
     ]
 },{

@@ -9,6 +9,9 @@ const db = require('./config/mongoose')
 const session = require('express-session');
 const passport = require('passport');
 const passportLocal = require('./config/passport-local-strategy');
+const passportJWT = require('./config/passport-jwt-strategy');
+const PassportGoogle = require('./config/passport-google-oauth2-strategy');
+
 const MongoStore = require('connect-mongo')(session);
 const sassMiddleware = require('node-sass-middleware');
 const flash  = require('connect-flash');
@@ -29,6 +32,9 @@ app.use(cookieParser());
 //use static pages
 app.use(express.static('./assets'));
 
+// make te uploads path be available to the browser 
+app.use('/uploads', express.static(__dirname + '/uploads'));
+
 
 //use express-ejs-layouts 
 app.use(expressLayouts);
@@ -45,7 +51,7 @@ app.set('views', './views');
 //mongo store is used to store the session cookie in the db
 app.use(session({
     name: "codeial",
-    //TODO change the seceret for production mode
+    //TODO change the seceret before deployment in production mode
     secret: 'something',
     saveUninitialized: false,
     resave: false,
@@ -72,7 +78,7 @@ app.use(flash());
 app.use(customMware.setFlash);
 
 // use express router
-app.use('/', require('./routes/index'));
+app.use('/', require('./routes'));
 
 
 app.listen(port, function(err){
